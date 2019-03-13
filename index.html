@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
+    <title>Train Time Tables
+    </title>
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid mx-5">
+        <div class="container">
+            <h1 class="display text-center">Train Times App</h1>
+        </div>
+    </div>
+
+    <div class="card mx-5 mb-3 border-primary">
+        <div class="card-header bg-primary text-light">
+            Current Train Times:
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead class="">
+                    <tr>
+                        <td>Train Name:</td>
+                        <td>Destination:</td>
+                        <td>Frequency (min):</td>
+                        <td>Next Arrival:</td>
+                        <td>Minutes Away:</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="table-content">
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card mx-5 border-primary">
+        <div class="card-header bg-primary text-light">
+            <i class="fa fa-train" aria-hidden="true"></i> Add Train
+        </div>
+
+        <table id='current-table'></table>
+
+        <form class="m-3">
+            <div class="form-group">
+                <label for="train-name">Train Name:</label>
+                <input type="input" class="form-control" id="train-name">
+            </div>
+
+            <div class="form-group">
+                <label for="destination">Destination:</label>
+                <input type="input" class="form-control" id="destination">
+            </div>
+
+            <div class="form-group">
+                <label for="first-train-time">First Train Time (HH:mm - 24hr time):</label>
+                <input type="input" class="form-control" id="first-train-time">
+            </div>
+
+            <div class="form-group">
+                <label for="frequency">Frequency (min):</label>
+                <input type="input" class="form-control" id="frequency">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+
+        </form>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="train.js"></script>
+</body>
+
+</html>
