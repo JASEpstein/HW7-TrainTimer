@@ -18,6 +18,7 @@ var firstTrain = '';
 var freq = '';
 var nextArrival = '';
 var minutesAway = '';
+var rowCount = 1;
 
 function calculateArrivalData() {
     // First Time (pushed back 1 year to make sure it comes before current time)
@@ -33,12 +34,12 @@ function calculateArrivalData() {
     // console.log(tRemainder);
 
     // Minute Until Train
-    minutesAway = freq - remainder;
-    // console.log("MINUTES TILL TRAIN: " + MinutesTillTrain);
+    var minutesAway = freq - remainder;
+    console.log(minutesAway);
 
     // Next Train
-    nextArrival = moment().add(minutesAway, "minutes");
-    // console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+    var nextArrival = moment().add(minutesAway, "minutes");
+    console.log(nextArrival);;
 }
 
 $('button').on('click', function (event) {
@@ -62,9 +63,11 @@ $('button').on('click', function (event) {
 });
 
 database.ref().on("child_added", function (childSnapshot) {
-
-        $("#table-content").append("<td>" +
-            childSnapshot.val().trainTime +
+        rowCount++;
+        var rowNumber = "row" + rowCount;
+        $(".table-body").append("<tr>").addClass(rowNumber);
+        $('.' + rowNumber).append(
+            "<td>" + childSnapshot.val().trainTime +
             "<td>" + childSnapshot.val().destination +
             "<td>" + childSnapshot.val().freq + "<td>" + childSnapshot.val().nextArrival + "<td>" + childSnapshot.val().minutesAway);
     },
