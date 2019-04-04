@@ -31,19 +31,20 @@ function calculateArrivalData() {
 
     // Time apart (remainder)
     var remainder = diffTime % freq;
-    // console.log(tRemainder);
 
     // Minute Until Train
-    var minutesAway = freq - remainder;
+    minutesAway = freq - remainder;
     console.log(minutesAway);
 
     // Next Train
-    var nextArrival = moment().add(minutesAway, "minutes");
-    console.log(nextArrival);;
+    nextArrival = moment().add(minutesAway, 'm').format("hh:mm A");
+
 }
 
-$('button').on('click', function (event) {
+$('.submit').on('click', function (event) {
     event.preventDefault();
+
+
 
     trainTime = $('#train-name').val().trim();
     destination = $('#destination').val().trim();
@@ -60,6 +61,11 @@ $('button').on('click', function (event) {
         nextArrival: nextArrival,
         minutesAway: minutesAway
     });
+});
+
+$('.clear').on('click', function () {
+    var existingEntries = database.ref('hw7-train-times/*');
+    existingEntries.removeValue();
 });
 
 database.ref().on("child_added", function (childSnapshot) {
